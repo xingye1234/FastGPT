@@ -1,0 +1,7 @@
+.font_styles{
+    color: white;
+    transform: skew(-10deg);
+    background: linear-gradient(0deg, #036CF0 0%, #2F91FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
