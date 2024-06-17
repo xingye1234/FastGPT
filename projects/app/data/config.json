@@ -1,22 +1,21 @@
 {
   "feConfigs": {
-    "lafEnv": "https://laf.dev"
+    "lafEnv": ""
   },
   "systemEnv": {
     "openapiPrefix": "fastgpt",
     "vectorMaxProcess": 15,
     "qaMaxProcess": 15,
-    "pgHNSWEfSearch": 100,
-    "tokenWorkers": 20
+    "pgHNSWEfSearch": 100
   },
   "llmModels": [
     {
-      "model": "gpt-3.5-turbo",
-      "name": "gpt-3.5-turbo",
+      "model": "qwen1.5-14b-chat",
+      "name": "qwen1.5-14b-chat",
       "maxContext": 16000,
       "avatar": "/imgs/model/openai.svg",
-      "maxResponse": 4000,
-      "quoteMaxToken": 13000,
+      "maxResponse": 16000,
+      "quoteMaxToken": 8000,
       "maxTemperature": 1.2,
       "charsPointsPrice": 0,
       "censor": false,
@@ -34,46 +33,23 @@
       "defaultConfig": {}
     },
     {
-      "model": "gpt-4-0125-preview",
-      "name": "gpt-4-turbo",
+      "model": "ChatGLM3",
+      "name": "ChatGLM3-GPU",
+      "maxContext": 16000,
       "avatar": "/imgs/model/openai.svg",
-      "maxContext": 125000,
-      "maxResponse": 4000,
-      "quoteMaxToken": 100000,
+      "maxResponse": 16000,
+      "quoteMaxToken": 8000,
       "maxTemperature": 1.2,
       "charsPointsPrice": 0,
       "censor": false,
       "vision": false,
-      "datasetProcess": false,
+      "datasetProcess": true,
       "usedInClassify": true,
       "usedInExtractFields": true,
       "usedInToolCall": true,
       "usedInQueryExtension": true,
       "toolChoice": true,
-      "functionCall": false,
-      "customCQPrompt": "",
-      "customExtractPrompt": "",
-      "defaultSystemChatPrompt": "",
-      "defaultConfig": {}
-    },
-    {
-      "model": "gpt-4-vision-preview",
-      "name": "gpt-4-vision",
-      "avatar": "/imgs/model/openai.svg",
-      "maxContext": 128000,
-      "maxResponse": 4000,
-      "quoteMaxToken": 100000,
-      "maxTemperature": 1.2,
-      "charsPointsPrice": 0,
-      "censor": false,
-      "vision": true,
-      "datasetProcess": false,
-      "usedInClassify": false,
-      "usedInExtractFields": false,
-      "usedInToolCall": false,
-      "usedInQueryExtension": false,
-      "toolChoice": true,
-      "functionCall": false,
+      "functionCall": true,
       "customCQPrompt": "",
       "customExtractPrompt": "",
       "defaultSystemChatPrompt": "",
@@ -82,43 +58,49 @@
   ],
   "vectorModels": [
     {
-      "model": "text-embedding-3-large",
-      "name": "Embedding-3-large",
+      "model": "bge-large-zh-v1.5",
+      "name": "bge-large-zh-v1.5-GPU",
       "avatar": "/imgs/model/openai.svg",
       "charsPointsPrice": 0,
-      "defaultToken": 512,
-      "maxToken": 3000,
-      "weight": 100,
-      "dbConfig": {},
-      "queryConfig": {},
-      "defaultConfig": {
-        "dimensions": 1024
-      }
+      "defaultToken": 700,
+      "maxToken": 5000,
+      "weight": 100
     },
     {
-      "model": "text-embedding-3-small",
-      "name": "Embedding-3-small",
+      "model": "gte-large",
+      "name": "gte-large",
       "avatar": "/imgs/model/openai.svg",
       "charsPointsPrice": 0,
-      "defaultToken": 512,
-      "maxToken": 3000,
-      "weight": 100,
-      "dbConfig": {},
-      "queryConfig": {}
+      "defaultToken": 700,
+      "maxToken": 5000,
+      "weight": 100
     },
     {
-      "model": "text-embedding-ada-002",
-      "name": "text-embedding-ada-002",
+      "model": "acge_text_embedding",
+      "name": "acge_text_embedding-GPU",
       "avatar": "/imgs/model/openai.svg",
       "charsPointsPrice": 0,
-      "defaultToken": 512,
-      "maxToken": 3000,
-      "weight": 100,
-      "dbConfig": {},
-      "queryConfig": {}
+      "defaultToken": 700,
+      "maxToken": 5000,
+      "weight": 100
     }
   ],
-  "reRankModels": [],
+  "reRankModels": [
+    {
+      "model": "bge-reranker-base",
+      "name": "检索重排-base",
+      "inputPrice": 0,
+      "requestUrl": "http://192.168.6.119:6006/api/v1/rerank",
+      "requestAuth": "ACCESS_TOKEN"
+    },
+    {
+      "model": "bge-reranker-v2-m3",
+      "name": "bge-reranker-v2-m3-GPU",
+      "inputPrice": 0,
+      "requestUrl": "http://192.168.6.119:6006/api/v1/rerank",
+      "requestAuth": "ACCESS_TOKEN"
+    }
+  ],
   "audioSpeechModels": [
     {
       "model": "tts-1",
